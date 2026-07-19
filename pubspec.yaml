@@ -1,7 +1,7 @@
 name: pert_daily_planner
 description: A mobile-first offline daily planner powered by PERT three-point estimation.
 publish_to: none
-version: 1.0.1+2
+version: 1.0.2+3
 
 environment:
   sdk: '>=3.10.0 <4.0.0'
