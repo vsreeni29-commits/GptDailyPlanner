@@ -266,9 +266,6 @@ class PlannerController extends ChangeNotifier {
     if (oldIndex < 0 || oldIndex >= schedule.tasks.length) {
       return const ActionResult.failure('That task could not be reordered.');
     }
-    if (newIndex > oldIndex) {
-      newIndex--;
-    }
     if (newIndex < 0 ||
         newIndex >= schedule.tasks.length ||
         newIndex == oldIndex) {

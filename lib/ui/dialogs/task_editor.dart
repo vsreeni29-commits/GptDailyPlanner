@@ -112,6 +112,7 @@ class _TaskEditorState extends State<TaskEditor> {
     final stats = hasChildren
         ? controller.statsForTask(widget.task!)
         : PertStats.fromEstimate(_estimate);
+    final validationError = hasChildren ? null : _estimate.validationError;
     final calculatedStart = _calculatedStart(controller);
     final calculatedEnd = calculatedStart.add(stats.expectedDuration);
     final bottomInset = MediaQuery.viewInsetsOf(context).bottom;
@@ -290,11 +291,10 @@ class _TaskEditorState extends State<TaskEditor> {
                         ),
                       ],
                     ),
-                    if (!hasChildren && _estimate.validationError
-                        case final error?) ...<Widget>[
+                    if (validationError != null) ...<Widget>[
                       const SizedBox(height: 8),
                       Text(
-                        error,
+                        validationError,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.error,
                         ),

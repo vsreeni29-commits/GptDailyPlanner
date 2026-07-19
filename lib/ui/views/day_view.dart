@@ -59,7 +59,7 @@ class _DayViewState extends State<DayView> {
                       buildDefaultDragHandles: false,
                       padding: const EdgeInsets.fromLTRB(16, 0, 16, 100),
                       itemCount: schedule.tasks.length,
-                      onReorder: (oldIndex, newIndex) =>
+                      onReorderItem: (oldIndex, newIndex) =>
                           _reorder(controller, oldIndex, newIndex),
                       itemBuilder: (context, index) {
                         final item = schedule.tasks[index];
@@ -157,7 +157,11 @@ class _DayViewState extends State<DayView> {
 
   Future<void> _run(Future<ActionResult> operation) async {
     final result = await operation;
-    if (mounted && result.message case final message?) {
+    if (!mounted) {
+      return;
+    }
+    final message = result.message;
+    if (message != null) {
       _showMessage(message);
     }
   }

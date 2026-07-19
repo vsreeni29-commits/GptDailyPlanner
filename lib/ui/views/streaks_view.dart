@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../controller/planner_controller.dart';
 import '../../controller/planner_scope.dart';
 import '../../domain/streak_calculator.dart';
 import '../../models/planner_task.dart';
