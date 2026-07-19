@@ -1,5 +1,7 @@
 # PERT Daily Planner
 
+[![Build APK and deploy web](https://github.com/vsreeni29-commits/GptDailyPlanner/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/vsreeni29-commits/GptDailyPlanner/actions/workflows/build-and-deploy.yml)
+
 A mobile-first, fully offline daily planner that turns uncertain duration guesses into an automatic back-to-back timeline. One Flutter codebase produces an Android APK and a responsive web app.
 
 ## What it does
