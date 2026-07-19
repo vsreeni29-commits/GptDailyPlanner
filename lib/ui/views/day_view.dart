@@ -147,6 +147,9 @@ class _DayViewState extends State<DayView> {
         ],
       ),
     );
+    if (!mounted) {
+      return;
+    }
     if (confirmed ?? false) {
       await _run(PlannerScope.of(context).deleteTask(task.id));
     }

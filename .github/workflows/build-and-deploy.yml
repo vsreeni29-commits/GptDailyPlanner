@@ -1,5 +1,7 @@
 name: Build APK and deploy web
 
+# One workflow produces both installable and hosted deliverables.
+
 on:
   push:
   pull_request:
@@ -116,4 +118,3 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
-

@@ -244,10 +244,11 @@ class PlannerController extends ChangeNotifier {
           'This task is not scheduled on that day.',
         );
       }
+      final completedAt = DateTime.now();
       completions[key] = CompletionRecord(
-        completedAt: DateTime.now(),
+        completedAt: completedAt,
         scheduledStart: occurrence.start,
-        scheduledEnd: occurrence.end,
+        scheduledEnd: maxDateTime(completedAt, occurrence.start),
       );
     }
     return saveTask(
