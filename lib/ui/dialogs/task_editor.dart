@@ -419,7 +419,7 @@ class _TaskEditorState extends State<TaskEditor> {
       firstDate: DateTime(2020),
       lastDate: DateTime(2100),
     );
-    if (picked != null) {
+    if (mounted && picked != null) {
       setState(() => _date = dateOnly(picked));
     }
   }
@@ -432,7 +432,7 @@ class _TaskEditorState extends State<TaskEditor> {
         minute: _startMinute % 60,
       ),
     );
-    if (picked != null) {
+    if (mounted && picked != null) {
       setState(() {
         _startMinute = picked.hour * 60 + picked.minute;
         _startPinned = true;
@@ -487,12 +487,11 @@ class _TaskEditorState extends State<TaskEditor> {
       _showMessage(result.message ?? 'The task could not be saved.');
       return;
     }
-    Navigator.pop(context);
+    final messenger = ScaffoldMessenger.of(context);
     if (result.message case final warning?) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(warning)));
+      messenger.showSnackBar(SnackBar(content: Text(warning)));
     }
+    Navigator.pop(context);
   }
 
   void _showMessage(String message) => ScaffoldMessenger.of(

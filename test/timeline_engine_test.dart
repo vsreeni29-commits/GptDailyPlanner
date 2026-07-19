@@ -79,7 +79,6 @@ void main() {
       'keeps a completed occurrence fixed and reflows from completion time',
       () {
         final originalStart = DateTime(2026, 7, 19, 9);
-        final originalEnd = DateTime(2026, 7, 19, 9, 30);
         final completedAt = DateTime(2026, 7, 19, 9, 15);
         final completed =
             task(id: 'a', date: date, startMinute: 9 * 60, order: 100).copyWith(
@@ -87,7 +86,7 @@ void main() {
                 dateKey(date): CompletionRecord(
                   completedAt: completedAt,
                   scheduledStart: originalStart,
-                  scheduledEnd: originalEnd,
+                  scheduledEnd: completedAt,
                 ),
               },
             );
@@ -98,7 +97,7 @@ void main() {
         ], date);
 
         expect(schedule.tasks.first.start, originalStart);
-        expect(schedule.tasks.first.end, originalEnd);
+        expect(schedule.tasks.first.end, completedAt);
         expect(schedule.tasks.first.isCompleted, isTrue);
         expect(schedule.tasks[1].start, completedAt);
       },

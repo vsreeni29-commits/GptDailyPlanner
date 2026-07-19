@@ -123,7 +123,7 @@ class TimelineEngine {
       if (completion != null) {
         start = completion.scheduledStart;
         end = completion.scheduledEnd;
-        final completionCursor = maxDateTime(completion.completedAt, start);
+        final completionCursor = maxDateTime(completion.scheduledEnd, start);
         cursor = cursor == null
             ? completionCursor
             : maxDateTime(cursor, completionCursor);
